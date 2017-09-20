@@ -2,13 +2,13 @@ const supertest = require("supertest");
 const app = require("../server/app");
 
 const agent = supertest.agent(app);
-const Users = require("../db/models/users");
+const User = require("../db/models/users");
 
 describe("http requests", () => {
   let user;
 
   before(done => {
-    Users.create({
+    User.create({
       firstName: "Jennifer",
       lastName: "Lawrence",
       email: "jlaw@gmail.com",

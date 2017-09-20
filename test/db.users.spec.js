@@ -1,11 +1,11 @@
-const Users = require("../db/models/users");
+const User = require("../db/models/users");
 const chai = require("chai");
 
 const expect = chai.expect;
 
 describe("Users model", () => {
   beforeEach("Sync and empty our user table", done => {
-    Users.sync({ force: true })
+    User.sync({ force: true })
       .then(() => {
         done();
       })
@@ -13,7 +13,7 @@ describe("Users model", () => {
   });
 
   beforeEach("Populate information", () => {
-    const creatingUser1 = Users.create({
+    const creatingUser1 = User.create({
       firstName: "Jimmy",
       lastName: "Fallon",
       isAdmin: true,
@@ -21,7 +21,7 @@ describe("Users model", () => {
       password: "123"
     });
 
-    const creatingUser2 = Users.create({
+    const creatingUser2 = User.create({
       firstName: "Robert",
       lastName: "Deniro",
       isAdmin: false,
@@ -33,11 +33,11 @@ describe("Users model", () => {
   });
 
   it("should exist", () => {
-    expect(Users).to.be.an("object");
+    expect(User).to.be.an("object");
   });
 
   describe("authenticate instance method", () => {
-    const jimmyFallon = Users.findOne({
+    const jimmyFallon = User.findOne({
       where: {
         email: "jimmy.fallon@gmail.com"
       }
@@ -77,7 +77,7 @@ describe("Users model", () => {
   });
 
   describe("generateJWT instance method", () => {
-    const robertDeniro = Users.findOne({
+    const robertDeniro = User.findOne({
       where: {
         email: "bobbyd@gmail.com"
       }
@@ -91,7 +91,7 @@ describe("Users model", () => {
   });
 
   describe("generateJWT instance method", () => {
-    const robertDeniro = Users.findOne({
+    const robertDeniro = User.findOne({
       where: {
         email: "bobbyd@gmail.com"
       }
@@ -105,7 +105,7 @@ describe("Users model", () => {
   });
 
   describe("toAuthJSON instance method", () => {
-    const robertDeniro = Users.findOne({
+    const robertDeniro = User.findOne({
       where: {
         email: "bobbyd@gmail.com"
       }

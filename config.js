@@ -29,6 +29,9 @@ const test = {
 };
 
 const production = {
+  app: {
+    port: process.env.PORT
+  },
   db: {
     url: process.env.DATABASE_URL,
     logging: false,

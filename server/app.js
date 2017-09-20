@@ -32,8 +32,12 @@ app.use("/api/auth", require("./api/auth/local"));
 app.use("/api/auth/google", require("./api/auth/google"));
 app.use("/api/users", require("./api/users"));
 
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../client/public/index.html"));
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../../client/public/index.html"));
+// });
+
+app.get("/", (req, res) => {
+  res.json("HELLO");
 });
 
 // ERROR HANDLING MIDDLEWARE

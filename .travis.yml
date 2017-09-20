@@ -2,6 +2,8 @@ language: node_js
 node_js:
   - "stable"
 services:
-  - postgresql: "9.6"
+  - postgresql
 before_script:
-  - psql -c 'create database jwt-app-test;' -U postgres
+  - psql -c 'create database jwt_app_test;' -U postgres
+addons:
+  postgresql: "9.6"

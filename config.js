@@ -20,7 +20,7 @@ const test = {
     port: 3001
   },
   db: {
-    url: "postgres://localhost:5432/jwt-app-test",
+    url: "postgres://localhost:5432/jwt_app_test",
     logging: false,
     force: false
   },

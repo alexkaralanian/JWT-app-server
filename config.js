@@ -30,7 +30,7 @@ const test = {
 
 const production = {
   db: {
-    url: process.env.DB_URL,
+    url: process.env.DATABASE_URL,
     logging: false,
     force: false
   },

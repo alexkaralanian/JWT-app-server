@@ -1,40 +1,21 @@
 const express = require("express");
-const passport = require("passport");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const session = require("cookie-session");
 const cors = require("cors");
-const path = require("path");
 require("../db/models/users");
 require("../config");
 
 const app = express();
-
-app.use(
-  session({
-    name: "session",
-    keys: [process.env.SECRET || "an insecure secret key"]
-  })
-);
-
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, "../../client/public")));
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 // API
 app.use("/api/auth", require("./api/auth/local"));
 app.use("/api/auth/google", require("./api/auth/google"));
 app.use("/api/users", require("./api/users"));
-
-// app.get("/*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../../client/public/index.html"));
-// });
 
 app.get("/", (req, res) => {
   res.json("HELLO");

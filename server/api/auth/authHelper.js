@@ -1,5 +1,6 @@
 const jwt = require("express-jwt");
-const secret = require("../../../secrets").secret;
+const secret = require("../../../config").secret;
+console.log(secret);
 
 const getTokenFromHeader = req => {
   if (
@@ -18,7 +19,7 @@ const auth = {
 
   auth: {
     required: jwt({
-      secret,
+      secret: process.env.SECRET,
       userProperty: "payload",
       getToken: getTokenFromHeader
     }),

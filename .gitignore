@@ -5,7 +5,7 @@
 node_modules
 
 # secrets
-secrets.js
+.env
 
 # testing
 coverage

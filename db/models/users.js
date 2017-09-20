@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const secret = require("../../secrets").secret;
+const secret = require("../../config").secret;
 const md5 = require("md5");
 
 const Sequelize = require("sequelize");

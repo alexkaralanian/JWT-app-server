@@ -1,5 +1,7 @@
 // config.js
+
 const env = process.env.NODE_ENV;
+require("dotenv").config();
 
 const development = {
   app: {
@@ -9,7 +11,8 @@ const development = {
     url: "postgres://localhost:5432/jwt-app",
     logging: false,
     force: true
-  }
+  },
+  secret: process.env.SECRET
 };
 
 const test = {
@@ -20,7 +23,8 @@ const test = {
     url: "postgres://localhost:5432/jwt-app-test",
     logging: false,
     force: false
-  }
+  },
+  secret: process.env.SECRET
 };
 
 const production = {
@@ -28,7 +32,8 @@ const production = {
     url: process.env.DB_URL,
     logging: false,
     force: false
-  }
+  },
+  secret: process.env.SECRET
 };
 
 const config = {

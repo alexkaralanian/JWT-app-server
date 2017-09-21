@@ -1,7 +1,6 @@
 // config.js
 
 const env = process.env.NODE_ENV;
-
 require("dotenv").config();
 
 const development = {

@@ -1,12 +1,16 @@
+require("../config");
 const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("../db/models/users");
-require("../config");
+
+const path = require("path");
 
 const app = express();
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, "../../client/build")));
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,8 +21,8 @@ app.use("/api/auth", require("./api/auth/local"));
 app.use("/api/auth/google", require("./api/auth/google"));
 app.use("/api/users", require("./api/users"));
 
-app.get("/", (req, res) => {
-  res.json("HELLO");
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../../client/build", "index.html"));
 });
 
 // ERROR HANDLING MIDDLEWARE
